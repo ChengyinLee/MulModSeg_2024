@@ -1,0 +1,3 @@
+amos_0561_gt.nii.gz, amos_0561.nii.gz
+amos_0575_gt.nii.gz, amos_0575.nii.gz
+...

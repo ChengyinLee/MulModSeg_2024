@@ -16,7 +16,7 @@ from monai.metrics import DiceMetric
 from monai.inferers.utils import sliding_window_inference_cy, sliding_window_inference
 
 from model.MulModSeg import MulModSeg, UNet3D_cy, SwinUNETR_cy
-from dataset.dataloader_amos import get_loader_amos
+from dataset.dataloader_data1 import get_loader_data1
 
 # for 
 import nibabel as nib
@@ -95,7 +95,7 @@ def test(args):
     post_label = AsDiscrete(to_onehot=args.num_class)
     post_pred = AsDiscrete(argmax=True, to_onehot=args.num_class)
     spacing = (args.space_x, args.space_y, args.space_z)
-    test_loader = get_loader_amos(train_modality=args.test_mod, phase='val', persistent=True)
+    test_loader = get_loader_data1(train_modality=args.test_mod, phase='val', persistent=True)
     
     start_time = time.time()
     with torch.no_grad():

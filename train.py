@@ -20,7 +20,7 @@ from monai.metrics import DiceMetric
 from monai.networks.nets import UNet
 
 from model.MulModSeg import MulModSeg, UNet3D_cy, SwinUNETR_cy
-from dataset.dataloader_amos import get_loader_amos
+from dataset.dataloader_data1 import get_loader_data1
 
 from optimizers.lr_scheduler import LinearWarmupCosineAnnealingLR
 from monai.losses import DiceCELoss
@@ -224,12 +224,12 @@ def process(args):
     torch.backends.cudnn.benchmark = True
 
     # train loader
-    # train_loader, train_sampler = get_loader_amos(modality='CT', phase='train')
+    # train_loader, train_sampler = get_loader_data1(modality='CT', phase='train')
     if args.train_modality == 'MIX':
-        train_loader_ct = get_loader_amos(train_modality='CT', phase='train', persistent=True)
-        train_loader_mr = get_loader_amos(train_modality='MR', phase='train', persistent=True)
+        train_loader_ct = get_loader_data1(train_modality='CT', phase='train', persistent=True)
+        train_loader_mr = get_loader_data1(train_modality='MR', phase='train', persistent=True)
     else:
-        train_loader = get_loader_amos(train_modality=args.train_modality, phase='train', persistent=True)
+        train_loader = get_loader_data1(train_modality=args.train_modality, phase='train', persistent=True)
     
 
     if args.rank == 0:
